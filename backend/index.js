@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use(createLimiter);
 app.use(cookieParser());
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(cors({ origin: "https://tiny-url-ruddy.vercel.app", credentials: true }));
 
 // ROUTES
 app.use("/api/auth", authRoutes);

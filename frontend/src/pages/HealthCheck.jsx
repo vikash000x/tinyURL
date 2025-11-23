@@ -11,7 +11,7 @@ export default function HealthCheck() {
   async function fetchHealth() {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:4000/healthz");
+      const res = await fetch("https://tiny-url-backend-tau.vercel.app/healthz");
       const json = await res.json();
       setData(json);
     } catch {

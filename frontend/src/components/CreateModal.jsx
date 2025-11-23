@@ -143,7 +143,7 @@ export default function CreateLinkModal({ open, setOpen, refreshLinks }) {
                   }
                 `}
               >
-                <option value="tinyurl.com">http://localhost:5173</option>
+                <option value="tinyurl.com">https://tiny-url-ruddy.vercel.app/</option>
               </select>
 
               <span className={`${dark ? "text-gray-300" : "text-gray-700"}`}>
