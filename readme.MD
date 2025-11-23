@@ -131,8 +131,10 @@ TinyURL/
   <Route path="*" element={<div className="text-center text-xl mt-40">URL Not Found</div>} />
 </Routes>
 
+---
 
-🛣️ Backend Route Structure
+# 🛣️ Backend Route Structure
+
 app.use("/api/auth", authRoutes);
 app.use("/api/links", linkRoutes);
 app.use("/api/analytics", analyticsRoutes);
@@ -140,7 +142,9 @@ app.use("/api/redirect", redirectRoutes);
 app.use("/healthz", healthRoutes);
 
 
-⚙️ Installation
+---
+
+# ⚙️ Installation
 1️⃣ Clone the repo
 git clone https://github.com/your-username/tinyurl.git
 cd tinyurl
@@ -153,7 +157,8 @@ npm install
 cd ../backend
 npm install
 
-🔐 Environment Variables
+---
+# 🔐 Environment Variables
 Frontend .env
 VITE_BACKEND_URL=http://localhost:5000
 
@@ -166,7 +171,10 @@ EMAIL_USER=your-email
 EMAIL_PASS=your-email-password
 CLIENT_URL=http://localhost:5173
 
-▶️ Running the Project
+
+---
+
+# ▶️ Running the Project
 Start frontend
 cd frontend
 npm run dev
@@ -175,7 +183,9 @@ Start backend
 cd backend
 npm run dev
 
-🔄 OTP & Auth Flow
+---
+
+# 🔄 OTP & Auth Flow
 
 User signs up → backend sends OTP via Nodemailer
 
@@ -205,6 +215,8 @@ Run npx prisma migrate deploy
 🔸 CORS errors?
 
 Make sure CLIENT_URL matches frontend URL
+
+---
 
 👥 Contributors
 
