@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  isActive  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  otps      OTP[]
+  Links     Link[]
+}
+
+model OTP {
+  id        String   @id @default(cuid())
+  code      String
+  expiresAt DateTime
+  type      String   // "signup" | "forgot"
+  used      Boolean  @default(false)
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+}
+
+model Link {
+  id          String   @id @default(cuid())
+  code        String   @unique
+  targetUrl   String
+  ownerId     String? 
+  owner       User?    @relation(fields: [ownerId], references: [id])
+  clicks      Int      @default(0)
+  createdAt   DateTime @default(now())
+  lastClicked DateTime?
+  isDeleted   Boolean  @default(false)
+  title       String?
+  description String?
+  Clicks      Click[]  @relation("LinkClicks")
+  @@index([code])
+}
+
+model Click {
+  id        String   @id @default(cuid())
+  linkId    String
+  link      Link     @relation(fields: [linkId], references: [id], name: "LinkClicks")
+  createdAt DateTime @default(now())
+  ip        String?
+  ua        String?
+  referrer  String?
+  day       DateTime?
+  @@index([linkId, createdAt])
+}
